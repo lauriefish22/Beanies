@@ -4,4 +4,12 @@ const SUPABASE_KEY =
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// export async functions that fetch data
+export async function getBeanieBabies() {
+    let { data, error } = await client.from('beanie_babies').select('*').limit(100);
+    return data;
+}
+
+export async funtion getZodiac() {
+    let { data, error } = await client.from('beanie_baby_astro_signs').select('name');
+    return data;
+}
