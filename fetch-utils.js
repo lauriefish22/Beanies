@@ -6,17 +6,17 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getBeanieBabies(signTheUserSelected) {
     if (signTheUserSelected) {
+        let { data, error } = await client
+            .from('beanie_babies')
+            .select('*')
+            .eq('astroSign', signTheUserSelected)
+            .limit(100);
+        return data;
+    }
     let { data, error } = await client
-    .from('beanie_babies')
-    .select('*')
-    .eq('astroSign', signTheUserSelected)
-    .limit(100);
-    return data;
-}
-let { data, error } = await client
-    .from('beanie_babies')
-    .select('*')
-    .limit(100);
+        .from('beanie_babies')
+        .select('*')
+        .limit(100);
     return data;
 }
 export async function getZodiac() {
